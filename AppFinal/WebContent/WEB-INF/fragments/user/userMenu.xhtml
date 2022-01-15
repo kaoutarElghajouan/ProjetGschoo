@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<body>
+    <ui:composition>
+  <p:breadCrumb >
+       
+         <p:menuitem value="home"/>
+         <p:menuitem value="Users"
+                     actionListener="#{userBean.listHandler()}"
+				      ajax="true"
+				      update="mainPanel"/>
+				       
+			<p:menuitem  value="#{userBean.menuLabel}"/>
+               
+       </p:breadCrumb>
+     <p:separator/>
+   
+ <p:menubar autoDisplay="false">
+   <p:menuitem value="Liste"
+                icon="pi pi-file-o"
+                actionListener="#{userBean.listHandler()}"
+                ajax="true"
+                update="mainPanel"
+                rendered='#{!userBean.menuLabel.equals("Liste")}'/>
+                
+                
+   <p:menuitem value="Ajout"
+                icon="pi pi-plus-circle"
+                actionListener="#{userBean.addHandler()}"
+                ajax="true"
+                update="mainPanel"
+                rendered='#{!userBean.menuLabel.equals("Ajout")}'/>
+   
+   
+    
+    
+       <p:menuitem ajax="false" value="PDF" icon="pi pi-file-pdf" rendered="#{userBean.c}">
+		    <p:dataExporter type="pdf" target="userDT" fileName="usersPDF"/>
+    </p:menuitem>
+    
+     <p:menuitem ajax="false" value="Excel" icon="pi pi-file-excel" rendered="#{userBean.c}" >
+		    <p:dataExporter type="xls" target="userDT" fileName="usersEcxcel" />
+    
+    </p:menuitem>
+
+   </p:menubar>
+   
+   <h:commandLink >
+    <h:graphicImage  name="pdf.PNG"   id="imgPdf" library="images" rendered="#{userBean.c}"/>
+   <p:dataExporter type="pdf" target="userDT" fileName="usersPdf"/>
+   </h:commandLink>
+   
+   <h:commandLink >
+    <h:graphicImage  name="excel.PNG"   id="imgExcel" library="images" rendered="#{userBean.c}"/>
+   <p:dataExporter type="xls" target="userDT" fileName="usersEcxcel"/>
+   </h:commandLink>
+
+
+</ui:composition>
+
+</body>
+</html>

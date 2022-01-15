@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:p="http://primefaces.org/ui">
+ <h:body>
+ 
+ <ui:composition>
+  <br/>
+ <p:fieldset legend="#{filiereBean.menuLabel} d'Filiere"><br/>
+ 
+      <div align="center">
+		 <p:panelGrid >
+		 
+		 <!-- Id -->
+		       <p:row styleClass="rowsCls">
+		       <p:column>
+		       <br/>
+		        <span class="ui-float-label">
+		           <p:inputText disabled="true" 
+		                      value="#{filiereBean.filiere.id}"
+		                      size="70"/>
+		               <p:outputLabel for="@previous" value="ID"/>
+		         </span>
+		         <br/>
+		        </p:column>
+		        
+		         
+		       </p:row>
+		     
+		       <!-- Code -->
+		  <p:row >
+		       <p:column >
+		       <br/>
+		        <span class="ui-float-label">
+		           <p:inputText required="true"
+		                       requiredMessage="Champs Code est Obligatoire"
+		                      value="#{filiereBean.filiere.code}"
+		                      size="70"/>
+		               <p:outputLabel for="@previous" value="Code"/>
+		            </span>
+		            <br/>
+		          </p:column>
+		      </p:row>
+		      
+		      <p:row>
+		        <p:column>
+		        <br/>
+		         <!--Libelle -->
+		      
+		         <span class="ui-float-label">
+		           <p:inputText required="true"
+		                       requiredMessage="Champs Libelle est Obligatoire"
+		                      value="#{filiereBean.filiere.libelle}"
+		                      size="70"/>
+		               <p:outputLabel for="@previous" value="Libelle"/>
+		            </span>
+		            <br/>
+		       </p:column>
+		     </p:row>
+        </p:panelGrid>
+	 </div>
+   
+<br/>
+ 
+ 
+</p:fieldset><br/>
+  <div align="center"><h:commandButton value="Enregistrer" id="SaveFiliere"
+										 action="#{filiereBean.save()}" /></div>
+ 
+ </ui:composition>
+ </h:body>
+
+</html>

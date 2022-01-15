@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:p="http://primefaces.org/ui">
+      
+       <h:body>
+ 
+ <ui:composition>
+  <br/>
+ <p:fieldset legend="#{userBean.menuLabel} d'User"><br/>
+ 
+ <center>
+		 
+		 
+		 <p:panelGrid >
+		 
+		 <!-- Id -->
+		       <p:row id="stylePerColumn" >
+		       <p:column colspan="2" >
+		       <br/>
+		        <span class="ui-float-label" >
+		           <p:inputText disabled="true" 
+		                      value="#{etudiantBean.etudiant.id}"
+		                      size="100"/>
+		               <p:outputLabel for="@previous" value="ID"/>
+		         </span>
+		         <br/>
+		        </p:column>
+		       </p:row>
+		       
+		       <!-- Nom -->
+		  <p:row   styleClass="rowsCls">
+		       <p:column >
+		       <br/>
+		        <span class="ui-float-label">
+		           <p:inputText required="true"
+		                       requiredMessage="Champs Nom est Obligatoire"
+		                      value="#{userBean.user.nom}"
+		                      size="45"/>
+		               <p:outputLabel for="@previous" value="Nom"/>
+		            </span>
+		            <br/>
+		            </p:column>
+		        
+		         <!--Prenom -->
+		         <p:column >
+		         <br/>
+		        <span class="ui-float-label">
+		           <p:inputText required="true"
+		                       requiredMessage="Champs Prenom est Obligatoire"
+		                      value="#{userBean.user.prenom}"
+		                      size="45"/>
+		               <p:outputLabel for="@previous" value="Prenom"/>
+		            </span>
+		              <br/>
+		          </p:column>
+		        </p:row>
+		        
+		        <p:row styleClass="rowsCls">
+			         <!--Login -->
+		          <p:column >
+		            <br/>
+		        <span class="ui-float-label">
+		           <p:inputText required="true"
+		                       requiredMessage="Champs Loginest Obligatoire"
+		                      value="#{userBean.user.login}"
+		                      size="45"/>
+		               <p:outputLabel for="@previous" value="Login"/>
+		            </span>
+		              <br/>
+		         </p:column>	
+		        </p:row>
+		        <p:row styleClass="rowsCls">
+		               <!--Password-->
+		          
+		         <p:column >
+		           <br/>
+		        <span class="ui-float-label">
+		           <p:password required="true"
+		                       requiredMessage="Champs Password est Obligatoire"
+		                      value="#{userBean.user.password}"
+		                      size="45" feedback="true"/>
+		               <p:outputLabel for="@previous" value="Password"/>
+		            </span>
+		              <br/>
+		         </p:column>
+		     
+		       </p:row>
+		       
+		       
+		       
+		 </p:panelGrid>
+  </center>
+ 
+ 
+ 
+ 
+ </p:fieldset>
+ 
+ 
+		    <div  align="center">  <h:commandButton value="Enregistrer" id="SaveUser"
+										 action="#{userBean.save()}" /></div>
+ </ui:composition>
+ </h:body>
+      
+
+</html>

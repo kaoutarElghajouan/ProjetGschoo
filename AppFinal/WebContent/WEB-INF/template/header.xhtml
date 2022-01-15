@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+    <ui:composition >
+      
+           <table >
+                   <tr>
+                      <td rowspan="2">
+                         <a href="./">
+                             <h:graphicImage id="imgUniversity" name="university.PNG" library="images"  />
+                   
+                          </a>
+                   </td>
+                    
+                   <td>
+                     <div>
+                         <h:form prependId="false">
+                             <p:ajaxStatus id="ajaxSt">
+                                <f:facet name="start">
+                                     <i class="pi pi-spin pi-spinner"/>
+                                </f:facet>
+                                <f:facet name="complete">
+                                        <h:outputText value="" />
+                                </f:facet>
+                             </p:ajaxStatus>
+                       
+                         </h:form>
+                     </div>
+                   </td>
+                   
+                   <td class="">
+                      <i class="pi pi-user" title="Utilisateur Connecte"/> &nbsp;
+                       <h:outputText value="Bonjour #{globalBean.userConnecte.login.toUpperCase()}" />
+                   
+                   </td >
+                   <td class="" >
+                        <i  class="pi pi-sign-in" title="Derniere Connexion"/>
+                         <h:outputText value="#{globalBean.lastLoginUser}" />&nbsp;
+                   </td>
+                
+                   <td >
+                    <h:form prependId="false">
+                      <p:commandLink onclick="PF('aboutDialog').show();">  
+                         <i class="pi pi-info info-header" title="Info" style=""/>
+                         </p:commandLink>
+                    </h:form>
+                   </td>
+                   </tr>
+                   
+                   
+                   <tr>
+                   
+                     
+                        <td colspan="3" >
+                            <h:form prependId="false">
+                                 <div  >
+                                    
+                                          <p:autoComplete     id="etudiantautocmp"
+                                                              size="40"
+                                                              required="true"
+                                                              requiredMessage="Veuillez saisir un CNE..."
+                                                              placeholder="Quick Search by CNE..."
+                                                              forceSelection="true"
+                                                              value="#{etudiantBean.etudiantComplete}"
+                                                              completeMethod="#{etudiantBean.completeEtudiant}"
+                                                              maxResults="10"
+                                                              var="e"
+                                                              itemValue="#{e}"
+                                                              itemLabel="#{etudiantBean.EtudiantLabel(e)}"
+                                                              converter="#{etudiantConverter}"/>
+                                                              
+                                         <p:commandButton icon="pi pi-search"
+                                                           actionListener="#{etudiantBean.Search()}"
+                                                           update="mainPanel,etudiantautocmp,MGrow"/>
+                                   
+                                </div>
+                            </h:form>
+                 	  </td>
+                 	   <td></td>
+                 	  <td>
+                 	  
+                 	  <h:form prependId="false">
+                 	     <p:commandLink actionListener="#{globalBean.deconnecter()}">
+                 	      <i class="pi pi-power-off" title="Logout"></i>
+                 	     
+                 	  </p:commandLink>
+                  </h:form>
+                 	 
+              </td>
+           </tr>
+      
+      </table>
+   </ui:composition>   
+                 
+               
+                 
+   
+ 
+</h:body>
+</html>

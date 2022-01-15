@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:p="http://primefaces.org/ui">
+ <h:body>
+ 
+ <ui:composition>
+ 
+ <br/>
+ <p:fieldset legend="#{etudiantBean.menuLabel} d'Etudiant" ><br/>
+ 
+ <center>
+		 <p:panelGrid >
+		 
+		 <!-- Id -->
+		       <p:row styleClass="rowsCls">
+		       <p:column colspan="2">
+		       <br/>
+		        <span class="ui-float-label">
+		           <p:inputText disabled="true" 
+		                      value="#{etudiantBean.etudiant.id}"
+		                      size="90"/>
+		               <p:outputLabel for="@previous" value="ID"/>
+		         </span>
+		         <br/>
+		        </p:column>
+		       </p:row>
+		       
+		       <!-- Nom -->
+		  <p:row   >
+		       <p:column >
+		       <br/>
+		        <span class="ui-float-label">
+		           <p:inputText required="true"
+		                       requiredMessage="Champs Nom est Obligatoire"
+		                      value="#{etudiantBean.etudiant.nom}"
+		                      size="40"/>
+		               <p:outputLabel for="@previous" value="Nom"/>
+		            </span>
+		            <br/>
+		            </p:column>
+		        <p:column>
+		         <!--Prenom -->
+		          <br/>
+		         <span class="ui-float-label">
+		           <p:inputText required="true"
+		                       requiredMessage="Champs Preom est Obligatoire"
+		                      value="#{etudiantBean.etudiant.prenom}"
+		                      size="40"/>
+		               <p:outputLabel for="@previous" value="Prenom"/>
+		            </span>
+		            <br/>
+		       </p:column>
+		        </p:row>
+		        
+		        <p:row >
+		        <p:column>
+		        <br/>
+		        <!--Cne -->
+		          
+		        <span class="ui-float-label">
+		           <p:inputText required="true"
+		                       requiredMessage="Champs Cne est Obligatoire"
+		                      value="#{etudiantBean.etudiant.cne}"
+		                      size="40"/>
+		               <p:outputLabel for="@previous" value="cne"/>
+		         </span>
+		         <br/>
+		       </p:column>
+		        
+		           <!--Filiere -->
+		        
+		        
+		           <p:column>
+		           <br/>
+		           <span class="ui-float-label">
+		               <p:autoComplete id="filiereAutocmpl"
+		                                required="true"
+		                                 requiredMessage="Champ Filiere est Obligatoire"
+		                                 forceSelection="true"
+		                                 size="40"
+		                                 value="#{etudiantBean.etudiant.filiere}"
+		                                 completeMethod="#{etudiantBean.completeFiliere}"
+		                                 maxResults="10"
+		                                 var="f"
+		                                 itemValue="#{f}"
+		                                 itemLabel="#{f.code}"
+		                                 converter="#{filiereConverter}"/>
+		                 <p:outputLabel for="@previous" value="Filiere"/>
+		           
+		           </span>
+		        <br/>
+		        </p:column>   
+		       </p:row>
+		       <p:row styleClass="rowsCls">
+		  <!--Photo -->
+		  <p:column>
+		  <p:fileUpload listener="#{etudiantBean.chargePicture}" mode="advanced" dragDropSupport="true"
+		                  update="MGrow,imgPreview" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+		                  
+		  </p:column>
+		     
+		             
+		  
+		     <p:column >
+		       <div>
+		           <p:panel header="Photo"  >
+		              
+		               <center>
+		                  <p:graphicImage id="imgPreview"
+		                                   height="150"
+		                                   width="150"
+		                                   onclick="PF('photoDLg').show()"
+		                                   style="cursor:pointer" 
+		                                   value="#{etudiantBean.etudiantPicture()}"
+		                                   stream="false"  />
+		               
+		               </center>
+		                    
+		           </p:panel>
+		       </div>
+		       
+		       </p:column>
+		     
+		         
+		       </p:row>
+		  
+		       
+		
+ </p:panelGrid>
+ </center>
+ </p:fieldset><br/> 
+  <div align="center"><h:commandButton value="Enregistrer"  id="SaveEtudiant"
+										 action="#{etudiantBean.save()}"/></div>
+ 
+ </ui:composition>
+ </h:body>
+
+</html>

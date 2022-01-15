@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>TP_JEE_Hibernate_JSF_Spring</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsf</welcome-file>
+  </welcome-file-list>
+  
+  
+  <!--Requested URL not found -->
+  
+  <error-page>
+       <error-code>404</error-code>
+       <location>/errors/not_found.jsf</location>
+  </error-page>
+  
+  
+   <!--Session expiration Exception -->
+  
+  <error-page>
+       <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+       <location>/</location>
+  </error-page>
+  
+  <!--Internal Server Error -->
+<error-page>
+       <exception-type>java.lang.Throwable</exception-type>
+       <location>/errors/error.jsf</location>
+ </error-page>
+  
+  
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>   
+    <param-value>Development</param-value>
+</context-param>
+
+  <!--resources -->
+   <context-param>
+     <param-name>javax.faces.WEBAPP_RESOURCES_DIRECTORY</param-name>
+     <param-value>/WEB-INF/resources</param-value>
+    </context-param>
+    
+<context-param>
+	<param-name>primefaces.THEME</param-name>
+	<param-value>#{globalBean.userTheme}</param-value>
+</context-param>
+ 
+ 
+  <listener>
+  	<listener-class>
+  		org.springframework.web.context.ContextLoaderListener
+  	</listener-class>
+  </listener>
+  
+  <listener>
+  	<listener-class>
+  		org.springframework.web.context.request.RequestContextListener
+  	</listener-class>
+  </listener>
+  
+  <context-param>
+   <param-name>facelets.SKIP_COMMENTS</param-name>
+   <param-value>true</param-value>
+</context-param>
+  
+  
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+</web-app>

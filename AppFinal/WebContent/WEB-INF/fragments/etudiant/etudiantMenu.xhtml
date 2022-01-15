@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<body>
+    <ui:composition>
+       <p:breadCrumb >
+       
+         <p:menuitem value="home"/>
+         <p:menuitem value="Etudiants"
+                     actionListener="#{etudiantBean.listHandler()}"
+				      ajax="true"
+				      update="mainPanel"/>
+				       
+			<p:menuitem  value="#{etudiantBean.menuLabel}"/>
+               
+       </p:breadCrumb>
+     <p:separator/>
+   
+<p:menubar autoDisplay="false">
+   <p:menuitem value="Liste"
+                icon="pi pi-file-o"
+                actionListener="#{etudiantBean.listHandler()}"
+                ajax="true"
+                update="mainPanel"
+                rendered='#{!etudiantBean.menuLabel.equals("Liste")}'/>
+                
+                
+   <p:menuitem value="Ajout"
+                icon="pi pi-plus-circle"
+                actionListener="#{etudiantBean.addHandler()}"
+                ajax="true"
+                update="mainPanel"
+                rendered='#{!etudiantBean.menuLabel.equals("Ajout")}'/>
+   
+    <p:menuitem ajax="false" value="Excel" icon="pi pi-file-excel" rendered="#{etudiantBean.c}" >
+		    <p:dataExporter type="xls" target="etudiantDT" fileName="etudiantsEcxcel" />
+    
+    </p:menuitem>
+    
+
+    
+       <p:menuitem ajax="false" value="PDF" icon="pi pi-file-pdf" rendered="#{etudiantBean.c}">
+		    <p:dataExporter type="pdf" target="etudiantDT" fileName="etudiantsPDF"/>
+    </p:menuitem>
+    
+   </p:menubar>
+
+
+ <h:commandLink >
+    <h:graphicImage  name="pdf.PNG"   id="imgPdf" library="images" rendered="#{etudiantBean.c}"/>
+   <p:dataExporter type="pdf" target="etudiantDT" fileName="etudiantsPdf"/>
+   </h:commandLink>
+   
+   <h:commandLink >
+    <h:graphicImage  name="excel.PNG"   id="imgExcel" library="images" rendered="#{etudiantBean.c}"/>
+   <p:dataExporter type="xls" target="etudiantDT" fileName="etudiantsEcxcel"/>
+   </h:commandLink>
+
+  
+  
+  
+
+</ui:composition>
+
+</body>
+</html>

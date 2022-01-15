@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:p="http://primefaces.org/ui">
+
+	 <h:body>
+        <ui:composition>
+             
+        <p:dataTable
+                         value="#{userBean.users}"
+                          var="u"
+                          rowKey="#{u.id}"
+                          sortBy="#{u.id}"
+                          rows="12"
+                          paginator="true"
+                          paginatorPosition="bottom">
+                <f:facet name="header">Liste des Users</f:facet> 
+                
+               <!-- Id -->  
+            <p:column sortBy="#{u.id}" filterBy="#{u.id}">
+            
+             <f:facet name="header">
+                    <h:outputText value="ID" />
+                 </f:facet>
+                     <h:outputText value="#{u.id}" />
+            
+            </p:column>
+             <!-- Nom -->
+            <p:column sortBy="#{u.nom}" filterBy="#{u.nom}">
+                 <f:facet name="header">
+                    <h:outputText value="Nom" />
+                 </f:facet>
+                     <h:outputText value="#{u.nom}" />
+            </p:column>      
+            
+            
+            <!-- Prenom -->
+            <p:column sortBy="#{u.prenom}" filterBy="#{u.prenom}">
+                 <f:facet name="header">
+                    <h:outputText value="Prenom" />
+                 </f:facet>
+                     <h:outputText value="#{u.prenom}" />
+            </p:column>
+            
+            <!-- Login -->
+            <p:column sortBy="#{u.login}" filterBy="#{u.login}">
+                 <f:facet name="header">
+                    <h:outputText value="Login" />
+                 </f:facet>
+                     <h:outputText value="#{u.login}"/>
+            </p:column>
+            
+                 <!-- LastLogin-->
+            <p:column sortBy="#{u.lastLogin}" filterBy="#{u.lastLogin}">
+                 <f:facet name="header">
+                    <h:outputText value="LastLogin" />
+                 </f:facet>
+                     <h:outputText value="#{u.lastLogin}"/>
+            </p:column>
+            
+        
+            
+            <!-- Delete -->
+              <p:column>
+               <f:facet name="header">
+                   <h:outputText value="Option" />
+               </f:facet>
+                   <div align="center">
+                 	 <p:commandLink actionListener="#{userBean.delete(u)}" 
+                 	                 ajax="true"
+                 	                 update="mainPanel">
+                 	      <i class="pi pi-trash" title="supprimer"></i>
+                 	  </p:commandLink>&nbsp;     
+                 	            	   
+                 	    <p:commandLink actionListener="#{userBean.showHandler(u)}" 
+                 	                   ajax="true"
+                 	                   update="mainPanel">
+                 	      <i class="pi pi-search" title="modifier"/>
+                 	  </p:commandLink>
+                  
+                 </div>
+            </p:column>     
+                   
+             </p:dataTable>
+        </ui:composition>
+ 
+ </h:body>
+	
+</html>

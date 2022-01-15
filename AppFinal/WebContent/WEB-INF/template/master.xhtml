@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+       <title>
+       <ui:insert id="title">Gestion d'ecole </ui:insert>
+       </title>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+    <h:outputStylesheet name="style.css" library="css"/>
+ 
+</h:head>
+
+<h:body>
+     <p:layout id="page" fullPage="true">
+       <!-- header -->
+		     <p:layoutUnit  id="header" position="north" size="90">
+		     
+		        <ui:insert name="header">
+		           <ui:include src="header.xhtml" />
+		        </ui:insert>
+		     </p:layoutUnit>
+		     
+		     
+		      <!-- menu -->
+       
+	        <p:layoutUnit id="menu"  position="west"  header="Navigation" minSize="300" maxSize="400" resizable="true" 
+	                        collapsible="true" >
+			     
+			        <ui:insert name="menu">
+			           <ui:include src="menu.xhtml" />
+			        </ui:insert>
+			     </p:layoutUnit>
+      
+      
+      <!-- content -->
+	        <p:layoutUnit id="content" position="center" >
+			     
+			        <ui:insert name="content">
+			           <ui:include src="main.xhtml" />
+			        </ui:insert>
+			     </p:layoutUnit>
+	      
+      <!--footer -->
+	        <p:layoutUnit id="footer"  position="south"  size="40">
+				     
+				        <ui:insert name="footer">
+				           <ui:include src="footer.xhtml" />
+				        </ui:insert>
+				     </p:layoutUnit>
+      
+  </p:layout>
+  
+     <ui:include src="../fragments/dialogs.xhtml"/>
+
+</h:body>
+
+
+</html>

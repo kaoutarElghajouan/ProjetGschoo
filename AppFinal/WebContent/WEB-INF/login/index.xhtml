@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+    <title> Login </title>
+    <h:outputStylesheet  name="login.css" library="css" />
+    
+</h:head>
+
+<h:body  class="body" >
+    
+     <div id ="div">
+         <h:form  prependId="false" id ="form">
+                <h:graphicImage  name="logo.jpg"   id="imglogo" library="images" />
+                
+            <p:inputText id="login"
+                          required="true"
+                          requiredMessage="Login required"
+                          placeholder="Login"
+                          value="#{globalBean.user.login}"/>
+             
+                <br/> <br/>
+             <p:password id="password"
+                          required="true"
+                          requiredMessage="Password required"
+                          placeholder="Password"
+                          value="#{globalBean.user.password}" />
+                  
+                   <br/>
+             <p:commandButton id="btnLogin"
+                              value="Se Connecter"
+                               actionListener="#{globalBean.connecter()}"
+                               update="MyGrow,form" />
+                     
+                     <p:growl id="MyGrow" showDetail="true"/>
+                             
+          
+     </h:form>
+ </div>
+ 
+
+
+</h:body>
+</html>

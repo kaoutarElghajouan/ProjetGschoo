@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<body>
+        <ui:composition>
+                  <h:form>
+                     <p:accordionPanel id="accordPanel" activeIndex="#{globalBean.indexMenu}">
+                             
+                     <p:tab title="Gestion d'ecole" >
+                      <p:menu >
+                           <!-- Accueil -->
+                          <p:menuitem value="Accueil "
+                                        icon="pi pi-home"
+                                        actionListener="#{globalBean.home()}"
+                                        update="accordPanel,mainPanel" 
+                                        ajax="true"/>
+                             <!-- Filiere -->   
+                           <p:menuitem value="Filieres"
+                                         icon="pi pi-list"
+                                         actionListener="#{globalBean.filiere()}"
+                                         update="accordPanel,mainPanel"
+                                         ajax="true"/>
+                              <!--Etudiant -->        
+                           <p:menuitem value="Etudiants"
+                                       icon="pi pi-users"
+                                       actionListener="#{globalBean.etudiant()}"
+                                       update="accordPanel,mainPanel" 
+                                        ajax="true"/>
+                             
+                           </p:menu>
+                          </p:tab>
+                              <!--Administrateur --> 
+                          <p:tab title="Administration">
+                             <p:menu >
+                                <p:menuitem value="Utilisateurs"
+                                             icon="pi pi-user"
+                                             actionListener="#{globalBean.user()}"
+                                             update="accordPanel,mainPanel" 
+                                             ajax="true"/>
+                                             
+                                  <p:menuitem value="Préférences"
+                                              icon="pi pi-cog"
+                                               actionListener="#{globalBean.preferences()}"
+                                               update="accordPanel,mainPanel" 
+                                                ajax="true"/>
+                             </p:menu>
+                            
+                          </p:tab>
+                                 <!--Aide --> 
+                          <p:tab title="Aide">
+                                <p:menu >
+                                   <p:menuitem value="Aide"
+                                                 icon="pi pi-question"
+                                                 actionListener="#"
+                                                 onclick="	PF('aboutDialog').show();"/>
+                                    <p:menuitem value="A propos"
+                                                 icon="pi pi-info"
+                                                 actionListener="#"
+                                                 onclick="PF('aboutDialog').show();"/> 
+                                                 
+                                   <p:menuitem value="Throw Exception"
+                                                 icon="pi pi-ban"
+                                                 ajax="true"
+                                                 actionListener="#{globalBean.throwException()}"/>            
+                          
+                                  </p:menu>
+                          </p:tab>
+                       </p:accordionPanel>
+                  </h:form>
+
+
+
+
+
+</ui:composition>
+
+</body>
+</html>

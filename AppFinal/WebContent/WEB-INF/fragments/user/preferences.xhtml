@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:p="http://primefaces.org/ui">
+
+<body>
+  <ui:composition>
+  <h:form>
+       <p:breadCrumb>
+          <p:menuitem value="home"/>
+          <p:menuitem value="Preference"/>
+          <p:menuitem value="Themes"/>       
+       </p:breadCrumb>
+   <p:separator/>
+  
+                
+                
+                
+                  <p:fieldset legend="Modification du Theme">
+                    <p:panelGrid columns="2"  cellpadding="5" >
+                     <p:outputLabel  for="themes" value="Changer le Theme de votre Application"/>
+                       <p:themeSwitcher id="themes"
+                                         style="width:300px"
+                                         effect="fade"
+                                         value="#{globalBean.userConnecte.theme}">
+                   
+                
+                        <f:selectItem itemLabel="Choisir un Theme" itemValue="" />
+                          <f:selectItems  value="#{globalBean.themes}"
+                                         var="t"
+                                         itemLabel="#{t.themeDisplayName}"
+                                         itemValue="#{t.name}"/>
+                            <p:ajax listener="#{globalBean.saveUserConnecteTheme()}" update="MGrow"/>
+                         </p:themeSwitcher>
+                
+                   </p:panelGrid>
+                </p:fieldset>
+           
+           </h:form>
+          
+   
+     
+   </ui:composition>
+
+
+</body>
+
+
+</html>
